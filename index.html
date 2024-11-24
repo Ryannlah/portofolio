@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Creative Developer</title>
+
+    <!-- Custom Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Header Style */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(60, 59, 59, 0.9);
+            padding: 1rem 3%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff6a6a;
+        }
+
+        /* Section Spacing */
+        section {
+            padding: 6rem 10%;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .content {
+            max-width: 50%;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: #ff6a6a;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        .hero a {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #ff6a6a;
+            color: #fff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero a:hover {
+            background-color: #ff4747;
+            box-shadow: 0 0 20px rgba(255, 106, 106, 0.6);
+        }
+
+        .hero .avatar {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .avatar img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* About Section */
+        #about {
+            background-color: #222;
+        }
+
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        #about p {
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+
+        /* Skills Section */
+        #skills {
+            background-color: #333;
+        }
+
+        #skills h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        #skills ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #skills ul li {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+
+        /* Work Section */
+        #work {
+            background-color: #222;
+        }
+
+        #work h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        #work .projects {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #work .projects .project {
+            width: calc(33.333% - 20px);
+            margin-right: 20px;
+            margin-bottom: 20px;
+            background-color: #444;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        #work .projects .project:last-child {
+            margin-right: 0;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #222;
+        }
+
+        #contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        #contact form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #contact form input,
+        #contact form textarea {
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #444;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #333;
+            color: #fff;
+        }
+
+        #contact form button {
+            padding: 1rem;
+            background-color: #ff6a6a;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #contact form button:hover {
+            background-color: #ff4747;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ff6a6a;
+            transform: scale(1.1);
+            transition: all 0.6s ease;
+        }
+         /* Footer Section */
+         footer {
+            background-color: #111;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2.5rem; /* Adjusted margin to create space between icons and footer */
+            color: #ccc;
+            font-size: 0.9rem;
+            border-top: 1px solid #444;
+        }
+
+        footer span {
+            color: #ff6a6a;
+        }
+
+
+        /* Lightbox CSS */
+.thumbnail {
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+}
+
+#lightbox-overlay {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#lightbox-overlay .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#lightbox-overlay .close:hover {
+    color: #ff4747;
+}
+
+
+   /* Animasi fade-in dengan smoothing */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animasi fade-in up dengan easing yang lebih halus */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animasi slide-in dari kiri dengan efek melambat */
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-150px) rotate(-5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) rotate(0);
+    }
+}
+
+/* Efek hover untuk avatar atau elemen gambar */
+.avatar:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(255, 106, 106, 0.7);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Efek hover untuk tombol */
+.hero a:hover {
+    background-color: #ff4747;
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 106, 106, 0.8);
+    transition: all 0.4s ease;
+}
+
+/* Animasi untuk teks judul */
+.hero h1 span {
+    display: inline-block;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+/* Efek hover pada project cards */
+.project:hover {
+    transform: scale(1.05) rotate(2deg);
+    background-color: #555;
+    transition: transform 0.5s ease, background-color 0.3s ease;
+}
+
+/* Efek hover untuk ikon media sosial */
+.social-icons a:hover {
+    color: #ff6a6a;
+    transform: scale(1.2) rotate(360deg);
+    transition: transform 0.6s ease, color 0.4s ease;
+}
+
+/* Animasi bounce untuk teks yang lebih hidup */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-15px);
+    }
+    60% {
+        transform: translateY(-7px);
+    }
+}
+
+/* Durasi dan delay untuk mengatur tempo animasi */
+.hero h1 {
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.hero p {
+    animation: fadeInUp 2s ease-out;
+}
+
+.hero a {
+    animation: fadeInUp 2.5s ease-out;
+}
+
+.avatar img {
+    animation: fadeIn 2s ease-out;
+}
+
+#about h2, #skills h2, #work h2, #contact h2 {
+    animation: fadeInUp 1.5s ease-out;
+}
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                font-size: 0.9rem;
+            }
+
+            header {
+                padding: 1rem 5%;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero .content {
+                max-width: 100%;
+                margin-bottom: 2rem;
+            }
+
+            .hero .avatar {
+                width: 250px;
+                height: 250px;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            #work .projects .project {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+   <!-- Header -->
+   <header>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="content">
+        <h1>Hello, Saya <span>Ryan Revaldo</span></h1>
+        <p>"Saya merancang dan mengembangkan situs web yang indah dan fungsional yang dapat menarik perhatian pengguna dan mudah digunakan. Bersama-sama, kita bisa menciptakan pengalaman digital yang luar biasa dan penuh inspirasi".</p>
+        <a href="#about">Learn More</a>
+    </div>
+    <div class="avatar">
+        <img src="gambar2.jpeg" alt="Ryan Revaldo"loading="lazy">
+
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <h2>About Me</h2>
+    <p>Saya seorang pengembang web yang penuh semangat, dengan pengalaman dalam menciptakan situs web dinamis dan ramah pengguna. Saya selalu bersemangat untuk mengerjakan proyek-proyek kreatif dan menantang yang dapat memperluas batas kemampuan saya, serta memberikan pengalaman pengguna yang lebih baik.</p>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+    <h2>Skills</h2>
+    <ul>
+        <li>HTML & CSS</li>
+        <li>JavaScript & React</li>
+        <li>UI/UX Design</li>
+    </ul>
+</section>
+
+<!-- Work Section -->
+<section id="work">
+    <h2>My Work</h2>
+    <div class="projects">
+        <div class="project">
+            <a href="" class="lightbox">
+                <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" alt="" class="thumbnail">
+            </a>
+        </div>
+        <div class="project">
+            <a href="project2-large.jpg" class="lightbox">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="" class="thumbnail">
+            </a>
+        </div>
+        <div class="project">
+            <a href="project3-large.jpg" class="lightbox">
+                <img src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9" alt="" class="thumbnail">
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        
+        <button type="submit">Send Message</button>
+    </form>
+
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+        <a href="https://www.facebook.com/share/1AaiD328uE/?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/yannnn_vd/profilecard/?igsh=MXY5b2VpMGxpbXk3YQ==" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/6281261452046" target="_blank"><i class="fab fa-whatsapp"></i></a> <!-- WhatsApp -->
+        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+         <!-- Footer Section -->
+         <footer>
+            <p>&copy; 2024 Ryan Revaldo. All Rights Reserved.</p>
+            <p>Designed and Developed by <span>Ryan Revaldo</span></p>
+        </footer>
+    </section>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    // Lightbox functionality
+    const lightboxLinks = document.querySelectorAll('.lightbox');
+    const lightboxOverlay = document.getElementById('lightbox-overlay');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('#lightbox-overlay .close');
+
+    lightboxLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const imgSrc = this.getAttribute('href');
+            lightboxImg.src = imgSrc;
+            lightboxOverlay.style.display = 'flex';
+        });
+    });
+
+    closeBtn.addEventListener('click', function () {
+        lightboxOverlay.style.display = 'none';
+    });
+
+    lightboxOverlay.addEventListener('click', function (e) {
+        if (e.target === lightboxOverlay) {
+            lightboxOverlay.style.display = 'none';
+        }
+    });
+</script>
+
+
+<script>
+  // Form Validation and Submission
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  if (name && email && message) {
+    // Replace with EmailJS or another email sending service code
+    alert('Message sent successfully!');
+  } else {
+    alert('Please fill in all fields.');
+  }
+});
+
+</script>
+
+<!-- Add this script tag to the <head> section of your HTML -->
+    <script async src="https://www.portofoliome.com"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'GA_TRACKING_ID');
+    </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  emailjs.init("BrGWtthE9vDCZg6BK"); // Pastikan userID benar
+
+  const contactForm = document.querySelector("form");
+
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    const emailData = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    emailjs.send("ryanlah", "ryanlah", emailData)  // Ubah "template_id" dengan ID template yang benar
+      .then(
+        function (response) {
+          Swal.fire({
+            icon: "success",
+            title: "Pesan Terkirim!",
+            text: "Terima kasih sudah menghubungi kami. Kami akan segera merespon pesan Anda.",
+            confirmButtonColor: "#333",
+            background: "#ffffff",
+            color: "#000000",
+          });
+          contactForm.reset();
+        },
+        function (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Gagal Mengirim Pesan",
+            text: "Mohon coba lagi. Pastikan semua data terisi dengan benar.",
+            confirmButtonColor: "#333",
+            background: "#ffffff",
+            color: "#000000",
+          });
+          console.error("Error: ", error);
+        }
+      );
+  });
+});
+
+    </script>
+</body>
+
+</html>
