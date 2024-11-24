@@ -54,14 +54,16 @@
         }
 
         nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: 500;
-            transition: color 0.3s ease;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        padding: 0.5rem;
+        transition: color 0.3s ease, transform 0.3s ease;
         }
 
         nav ul li a:hover {
             color: #ff6a6a;
+            transform: scale(1.1);
         }
 
         /* Section Spacing */
@@ -132,6 +134,63 @@
             width: 100%;
             object-fit: cover;
         }
+        /* Sertifikat Section */
+#sertifikat {
+    background-color: #333;
+    padding: 6rem 10%;
+}
+
+#sertifikat h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.certificates {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.certificate {
+    width: calc(33.333% - 20px);
+    margin-bottom: 20px;
+    background-color: #444;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: fadeInUp 1.8s ease-out;
+}
+
+.certificate img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.certificate img:hover {
+    transform: scale(1.05);
+}
+
+.certificate p {
+    color: #ddd;
+    font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .certificates {
+        flex-direction: column;
+    }
+
+    .certificate {
+        width: 100%;
+    }
+}
+
 
         /* About Section */
         #about {
@@ -217,31 +276,43 @@
             flex-direction: column;
         }
 
-        #contact form input,
-        #contact form textarea {
-            padding: 0.8rem;
-            margin-bottom: 1rem;
-            border: 1px solid #444;
-            border-radius: 5px;
-            font-size: 1rem;
-            background-color: #333;
-            color: #fff;
-        }
+        /* Form Field Transition */
+#contact form input, #contact form textarea {
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #444;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    transition: all 0.3s ease;
+}
 
-        #contact form button {
-            padding: 1rem;
-            background-color: #ff6a6a;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+/* Focus Effect */
+#contact form input:focus, #contact form textarea:focus {
+    outline: none;
+    background-color: #444;
+    border-color: #ff6a6a;
+    box-shadow: 0 0 8px rgba(255, 106, 106, 0.5);
+}
 
-        #contact form button:hover {
-            background-color: #ff4747;
-        }
+/* Submit Button Hover Transition */
+#contact form button {
+    padding: 1rem;
+    background-color: #ff6a6a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#contact form button:hover {
+    background-color: #ff4747;
+    transform: scale(1.05);
+}
+
 
         /* Social Media Icons */
         .social-icons {
@@ -346,6 +417,17 @@
         transform: translateY(0);
     }
 }
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* Animasi slide-in dari kiri dengan efek melambat */
 @keyframes slideInFromLeft {
@@ -547,6 +629,7 @@
             </a>
         </div>
         <div class="project">
+
             <a href="project2-large.jpg" class="lightbox">
                 <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="" class="thumbnail">
             </a>
@@ -558,7 +641,21 @@
         </div>
     </div>
 </section>
-
+<!-- Sertifikat Section -->
+<section id="sertifikat">
+    <h2>certificate</h2>
+    <div class="certificates">
+        <div class="certificate">
+            <img src="Certificate1.jpg" alt="Sertifikat 1" class="thumbnail">
+        </div>
+        <div class="certificate">
+            <img src="Certificate2.jpg" alt="Sertifikat 2" class="thumbnail"> 
+        </div>
+        <div class="certificate">
+            <img src="Sertifikat3.jpg" alt="Sertifikat 3" class="thumbnail">
+        </div>
+    </div>
+</section>
 <!-- Contact Section -->
 <section id="contact">
     <h2>Contact Me</h2>
@@ -575,7 +672,7 @@
         <a href="https://www.facebook.com/share/1AaiD328uE/?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="https://www.instagram.com/yannnn_vd/profilecard/?igsh=MXY5b2VpMGxpbXk3YQ==" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://wa.me/6281261452046" target="_blank"><i class="fab fa-whatsapp"></i></a> <!-- WhatsApp -->
-        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://github.com/Ryannlah" target="_blank"><i class="fab fa-github"></i></a>
     </div>
          <!-- Footer Section -->
          <footer>
